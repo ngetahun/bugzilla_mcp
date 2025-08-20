@@ -1,4 +1,4 @@
-from bugzilla import mcp
+from bugzilla_api import mcp
 
 def main():
     mcp.run(transport="stdio")

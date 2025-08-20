@@ -1,8 +1,6 @@
-import os
 from typing import Optional
-from pydantic import BaseSettings, Field, validator
+from pydantic import Field, validator
 from pydantic_settings import BaseSettings as PydanticBaseSettings
-
 
 class BugzillaConfig(PydanticBaseSettings):
     """Configuration for Bugzilla MCP Server that reads from environment variables."""
@@ -63,6 +61,12 @@ class BugzillaConfig(PydanticBaseSettings):
         "INFO",
         description="Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)",
         env="LOG_LEVEL"
+    )
+
+    default_query_parameters: Optional[dict] = Field(
+        {},
+        description="Default query parameters",
+        env="BUGZILLA_QUERY_PARAMETERS"
     )
     
     debug_mode: bool = Field(
